@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebGL Puzzle Game</title>
+    <style>
+        body { margin: 0; overflow: hidden; }
+        #start-screen, #game-screen { position: absolute; width: 100%; height: 100%; display: none; }
+        #start-screen { background-image: url('images/all_characters.jpg'); background-size: cover; }
+        .ui {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            z-index: 10;
+            color: #fff;
+            font-family: Arial, sans-serif;
+        }
+        .ui button, .ui select {
+            margin: 5px;
+            padding: 10px;
+            background: #333;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        .ui button:disabled, .ui select:disabled {
+            background: #555;
+            cursor: not-allowed;
+        }
+        .ui .time {
+            margin-top: 10px;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <div id="start-screen">
+        <div class="ui">
+            <div>
+                <label for="difficulty">Difficulty: </label>
+                <select id="difficulty">
+                    <option value="easy">Easy</option>
+                    <option value="medium">Medium</option>
+                    <option value="hard">Hard</option>
+                </select>
+            </div>
+            <button onclick="startGame()">Start Game</button>
+        </div>
+    </div>
+    <div id="game-screen">
+        <div class="ui">
+            <div id="level-buttons">
+                <!-- Level buttons will be dynamically created here -->
+            </div>
+            <div>
+                <button onclick="resetLevel()">Restart</button>
+                <button onclick="goToNextLevel()">Next Level</button>
+                <button onclick="goToPreviousLevel()">Previous Level</button>
+            </div>
+            <div class="time">
+                Time: <span id="time">0</span>s
+            </div>
+        </div>
+        <canvas></canvas>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
